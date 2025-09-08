@@ -38,7 +38,7 @@ const displayAllPlants = (plants) => {
                 <div class="">৳${plant.price}</div>
             </div>
         </div>
-        <button class="btn btn-primary rounded-full bg-[#15803D] border-none mt-3">Add to
+        <button onclick="addToCart('${plant.id}'),event" id="add-to-cart-btn-${plant.id}" class="btn btn-primary rounded-full bg-[#15803D] border-none mt-3">Add to
             Cart</button>
     </div>
     
@@ -86,12 +86,14 @@ const getPlantDetails = (plantId) => {
   const url = `https://openapi.programming-hero.com/api/plant/${plantId}`;
   fetch(url)
     .then((res) => res.json())
-    .then((json) => displayPlantDetails(json.plants));
+    .then((json) => {
+      displayPlantDetails(json.plants);
+    });
 };
 
 const displayPlantDetails = (plantDetails) => {
   document.getElementById("my_modal_5").showModal();
-  console.log(plantDetails);
+
   const modalDiv = document.getElementById("my_modal_5");
   modalDiv.innerHTML = `
   <div class="modal-box">
@@ -118,3 +120,64 @@ cardsParent.addEventListener("click", (e) => {
   if (!card) return;
   getPlantDetails(card.id.replace("plant-card-", ""));
 });
+
+let totalPrice = 0;
+let cart = [];
+
+const addToCart = async (plantId, e) => {
+  if (e) e.stopPropagation();
+
+  try {
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/plant/${plantId}`
+    );
+    const data = await res.json();
+    const plant = data.plant || data.plants;
+    if (!plant) return;
+
+    cart.push({
+      id: plant.id,
+      name: plant.name,
+      price: Number(plant.price) || 0,
+      qty: 1,
+    });
+    alert(`${plant.name} and price:${plant.price} added to cart`);
+
+    renderCart();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const renderCart = () => {
+  const cartParent = document.getElementById("cart-parent");
+  if (!cartParent) return;
+
+  cartParent.innerHTML = "";
+  totalPrice = 0;
+
+  cart.forEach((item, idx) => {
+    totalPrice += item.price * item.qty;
+
+    const cartItem = document.createElement("div");
+    cartItem.className =
+      "card-item flex justify-between items-center bg-[#F0FDF4] px-3 py-2 rounded mb-2";
+    cartItem.innerHTML = `
+      <div>
+        <h2 class="font-bold">${item.name}</h2>
+        <p class="opacity-50">৳${item.price} x ${item.qty}</p>
+      </div>
+      <button class="text-[#8C8C8C]" aria-label="Remove">&times;</button>
+    `;
+
+    cartItem.querySelector("button").addEventListener("click", () => {
+      cart.splice(idx, 1);
+      renderCart();
+    });
+
+    cartParent.appendChild(cartItem);
+  });
+
+  const totalEl = document.getElementById("cart-total-price");
+  if (totalEl) totalEl.textContent = `৳${totalPrice}`;
+};

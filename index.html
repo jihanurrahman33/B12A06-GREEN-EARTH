@@ -136,15 +136,7 @@
                 <!-- 5th col cart -->
                 <div class="add-to-cart-section bg-white p-4 w-full rounded gap-2">
                     <h2 class="font-semibold mb-2">Your Cart</h2>
-                    <div class="card-item flex justify-between items-center bg-[#F0FDF4] px-3 py-2 rounded mb-2">
-                        <div>
-                            <h2 class="font-bold">Mango Tree</h2>
-                            <p class=" opacity-50">৳500 x 1</p>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-xmark text-[#8C8C8C]"></i>
-                        </div>
-                    </div>
+                    <div id="cart-parent" class="cart"></div>
 
                     <hr class="border-t border-gray-300 my-6">
                     <div class="flex justify-between items-center font-semibold">
@@ -152,7 +144,7 @@
                             <h2>Total:</h2>
                         </div>
                         <div>
-                            <h2>৳1000</h2>
+                            <h2 id="cart-total-price">৳0</h2>
                         </div>
                     </div>
                 </div>
@@ -212,11 +204,6 @@
     <footer class="bg-[#14532D] h-16 flex items-center justify-center">
         <p class="text-center text-white">© 2025 Green Earth. All Rights Reserved.</p>
     </footer>
-
-
-
-
-
     
     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
         
