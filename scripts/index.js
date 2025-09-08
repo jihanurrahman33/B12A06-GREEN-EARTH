@@ -25,7 +25,7 @@ const displayAllPlants = (plants) => {
   plants.forEach((plant) => {
     const cardDiv = document.createElement("div");
     cardDiv.innerHTML = `
-    <div class="card bg-base-100 w-96 shadow-sm p-4 h-full">
+    <div id="plant-card-${plant.id}"  class="plant-card card bg-base-100 w-96 shadow-sm p-4 h-full">
         <figure class="bg-[#EDEDED] h-44">
             <img class="object-contain" src="${plant.image}" alt="${plant.name}" />
         </figure>
@@ -61,7 +61,7 @@ const displayAllCategories = (categories) => {
   categories.forEach((cat) => {
     const catDiv = document.createElement("div");
     catDiv.innerHTML = `
-     <li><button id="cat-btn-${cat.id}" onclick="getPlantsByCategories('${cat.id}')" class="catBtn block w-full px-3 py-2 rounded hover:bg-green-700 hover:text-white">${cat.category_name}</button></li>
+     <li><button id="cat-btn-${cat.id}" onclick="getPlantsByCategories('${cat.id}')" class="text-start catBtn block w-full px-3 py-2 rounded hover:bg-green-700 hover:text-white">${cat.category_name}</button></li>
     `;
     categoriesParent.appendChild(catDiv);
   });
@@ -82,3 +82,39 @@ const getPlantsByCategories = (catId) => {
   clickedBtn.classList.add("bg-[#15803D]");
   clickedBtn.classList.add("text-white");
 };
+const getPlantDetails = (plantId) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${plantId}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => displayPlantDetails(json.plants));
+};
+
+const displayPlantDetails = (plantDetails) => {
+  document.getElementById("my_modal_5").showModal();
+  console.log(plantDetails);
+  const modalDiv = document.getElementById("my_modal_5");
+  modalDiv.innerHTML = `
+  <div class="modal-box">
+            <h3 class="text-lg font-bold mb-2">${plantDetails.name}</h3>
+            <img class="rounded w-full h-60 object-cover mb-2" src="${plantDetails.image}" alt="">
+            <h3><span class="font-bold mb-2">Category:</span>${plantDetails.category}</h3>
+        <h3> <span class="font-bold mb-2">Price:</span>${plantDetails.price}</h3>
+        <p> <span class="font-bold mb-2">Description:</span>${plantDetails.description}</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+    </div>
+  
+  `;
+};
+
+const cardsParent = document.getElementById("cards-parent");
+
+cardsParent.addEventListener("click", (e) => {
+  const card = e.target.closest(".plant-card");
+  if (!card) return;
+  getPlantDetails(card.id.replace("plant-card-", ""));
+});

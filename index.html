@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="./styles/style.css" />
 
     <!-- font awesome cdn link  -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- daisy ui and tailwind link  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -87,7 +89,7 @@
                     <h2 class="mb-4 font-semibold">Categories</h2>
 
                     <ul id="categories-parent"
-                        class="space-y-1 [&_a]:block [&_a]:w-full [&_a]:rounded [&_a]:px-3 [&_a]:py-2 [&_a:hover]:bg-green-700 [&_a:hover]:text-white">
+                        class=" space-y-1 [&_a]:block [&_a]:w-full [&_a]:rounded [&_a]:px-3 [&_a]:py-2 [&_a:hover]:bg-green-700 [&_a:hover]:text-white">
 
                     </ul>
                 </div>
@@ -146,8 +148,12 @@
 
                     <hr class="border-t border-gray-300 my-6">
                     <div class="flex justify-between items-center font-semibold">
-                        <div><h2>Total:</h2></div>
-                        <div><h2>৳1000</h2></div>
+                        <div>
+                            <h2>Total:</h2>
+                        </div>
+                        <div>
+                            <h2>৳1000</h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -189,11 +195,9 @@
                     <input type="email" class="input w-full mt-2" placeholder="Your Email Address" />
                     <select class="select w-full mt-2">
                         <option disabled selected>Number of Trees</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option>1 Tree - $5</option>
+                        <option>5 Tree - $25</option>
+                        <option>10 Tree - $50</option>
                     </select>
                     <button
                         class="btn btn-neutral mt-4 w-full rounded-full bg-[#FACC15] text-[#15803D] border-none shadow-none">Donate
@@ -208,6 +212,15 @@
     <footer class="bg-[#14532D] h-16 flex items-center justify-center">
         <p class="text-center text-white">© 2025 Green Earth. All Rights Reserved.</p>
     </footer>
+
+
+
+
+
+    
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        
+    </dialog>
 
     <script src="./scripts/index.js"></script>
 </body>
