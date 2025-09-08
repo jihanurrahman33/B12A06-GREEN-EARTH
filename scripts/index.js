@@ -38,7 +38,7 @@ const displayAllPlants = (plants) => {
                 <div class="">৳${plant.price}</div>
             </div>
         </div>
-        <button onclick="addToCart('${plant.id}'),event" id="add-to-cart-btn-${plant.id}" class="btn btn-primary rounded-full bg-[#15803D] border-none mt-3">Add to
+        <button onclick="addToCart('${plant.id}',event)" id="add-to-cart-btn-${plant.id}" class="btn btn-primary rounded-full bg-[#15803D] border-none mt-3">Add to
             Cart</button>
     </div>
     
