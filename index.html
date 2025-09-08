@@ -14,6 +14,9 @@
     <!-- stylesheet link  -->
     <link rel="stylesheet" href="./styles/style.css" />
 
+    <!-- font awesome cdn link  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- daisy ui and tailwind link  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -51,7 +54,7 @@
                 </ul>
             </div>
             <div class="navbar-end">
-                <a class="btn rounded-full bg-[#FACC15] text-[#15803D] border-none">Plant a Tree</a>
+                <a class="btn rounded-full bg-[#FACC15] text-[#15803D] border-none shadow-none">Plant a Tree</a>
             </div>
         </div>
     </header>
@@ -129,9 +132,23 @@
                 </section>
 
                 <!-- 5th col cart -->
-                <div class="add-to-cart-section bg-white p-4 w-full">
-                    <h2>Your Cart</h2>
-                    <!-- cart items -->
+                <div class="add-to-cart-section bg-white p-4 w-full rounded gap-2">
+                    <h2 class="font-semibold mb-2">Your Cart</h2>
+                    <div class="card-item flex justify-between items-center bg-[#F0FDF4] px-3 py-2 rounded mb-2">
+                        <div>
+                            <h2 class="font-bold">Mango Tree</h2>
+                            <p class=" opacity-50">৳500 x 1</p>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-xmark text-[#8C8C8C]"></i>
+                        </div>
+                    </div>
+
+                    <hr class="border-t border-gray-300 my-6">
+                    <div class="flex justify-between items-center font-semibold">
+                        <div><h2>Total:</h2></div>
+                        <div><h2>৳1000</h2></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -149,14 +166,14 @@
                 </div>
                 <div class="card bg-base-100 w-full md:w-80 shadow-sm">
                     <div class="card-body items-center">
-                        <h2 class="card-title text-[#15803D]">500K+</h2>
-                        <p>Trees Planted</p>
+                        <h2 class="card-title text-[#15803D]">120+</h2>
+                        <p>Communities Involved</p>
                     </div>
                 </div>
                 <div class="card bg-base-100 w-full md:w-80 shadow-sm">
                     <div class="card-body items-center">
-                        <h2 class="card-title text-[#15803D]">500K+</h2>
-                        <p>Trees Planted</p>
+                        <h2 class="card-title text-[#15803D]">30+</h2>
+                        <p>Countries Reached</p>
                     </div>
                 </div>
             </div>
@@ -171,10 +188,12 @@
                     <input type="text" class="input w-full" placeholder="Your Name" />
                     <input type="email" class="input w-full mt-2" placeholder="Your Email Address" />
                     <select class="select w-full mt-2">
-                        <option disabled selected>Pick a color</option>
-                        <option>Crimson</option>
-                        <option>Amber</option>
-                        <option>Velvet</option>
+                        <option disabled selected>Number of Trees</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
                     </select>
                     <button
                         class="btn btn-neutral mt-4 w-full rounded-full bg-[#FACC15] text-[#15803D] border-none shadow-none">Donate

@@ -56,22 +56,29 @@ const getAllCategories = () => {
 };
 
 const displayAllCategories = (categories) => {
-  console.log(categories);
   const categoriesParent = document.getElementById("categories-parent");
   categoriesParent.innerHTML = "";
   categories.forEach((cat) => {
     const catDiv = document.createElement("div");
     catDiv.innerHTML = `
-     <li><button onclick="getPlantsByCategories('${cat.id}')" class="block w-full px-3 py-2 rounded hover:bg-green-700 hover:text-white">${cat.category_name}</button></li>
+     <li><button id="cat-btn-${cat.id}" onclick="getPlantsByCategories('${cat.id}')" class="catBtn block w-full px-3 py-2 rounded hover:bg-green-700 hover:text-white">${cat.category_name}</button></li>
     `;
     categoriesParent.appendChild(catDiv);
   });
 };
 getAllCategories();
 const getPlantsByCategories = (catId) => {
+  const allBtns = document.querySelectorAll(".catBtn");
+  allBtns.forEach((btn) => {
+    btn.classList.remove("bg-[#15803D]");
+    btn.classList.remove("text-white");
+  });
   manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/category/${catId}`;
   fetch(url)
     .then((res) => res.json())
     .then((json) => displayAllPlants(json.plants));
+  const clickedBtn = document.getElementById(`cat-btn-${catId}`);
+  clickedBtn.classList.add("bg-[#15803D]");
+  clickedBtn.classList.add("text-white");
 };
